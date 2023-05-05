@@ -55,7 +55,7 @@ const UserList = () => {
                       </p>
                     </>
                   ) : (
-                    <select name="status" className="">
+                    <select name="status" className="p-2.5 w-28 rounded-[10px]">
                       <option value="inActive">InActive</option>
                       <option value="active">Active</option>
                     </select>
