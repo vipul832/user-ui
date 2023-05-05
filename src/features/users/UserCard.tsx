@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 import { currentUser } from "./UserCardSlice";
@@ -8,12 +8,37 @@ const UserCard = () => {
   const user = useSelector(currentUser);
   const theme = useSelector(themeValue);
 
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handlePosition = (e: MouseEvent) => {
+      if (window.innerWidth < 950) {
+        setPosition({ x: e.clientX, y: e.clientY });
+      } else {
+        setPosition({ x: 0, y: 0 });
+      }
+    };
+
+    window.addEventListener("mousemove", handlePosition);
+    return () => {
+      window.removeEventListener("mousemove", handlePosition);
+    };
+  }, []);
+
   const rangValue = Math.floor(Math.random() * 100);
   if (!user) {
-    return <div className="lg:w-[350px]"></div>;
+    return <div className="w-[22rem]"></div>;
   }
+
   return (
-    <div className="lg:w-[350px] lg:h-[550px] bg-[#ffff]/30 backdrop-blur-md rounded-[40px] shadow-lg">
+    <div
+      className="w-[22rem]  lg:bg-white/30 lg:backdrop-blur-md rounded-[40px] shadow-lg backdrop-blur bg-white/100"
+      style={
+        position.x !== 0
+          ? { position: "absolute", top: position.y, left: position.x }
+          : {}
+      }
+    >
       <div className="p-8 leading-8 text-center">
         <div className="flex justify-center pb-7">
           <img

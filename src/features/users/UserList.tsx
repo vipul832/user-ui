@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllUsers } from "./userSlice";
 
-import { AiOutlineLock } from "react-icons/ai";
+import { AiOutlineLock, AiOutlineDown } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import { mouseEnter, mouseLeave } from "./UserCardSlice";
@@ -11,9 +11,9 @@ const UserList = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <table className="lg:min-w-[40vw] table-auto text-center items-center">
+      <table className="text-center items-center w-4/12">
         <thead>
-          <tr className="text-[20px] text-left">
+          <tr className="text-[1.3rem] text-left">
             <th>Name</th>
             <th>Status</th>
             <th>Access</th>
@@ -23,13 +23,13 @@ const UserList = () => {
         <tbody>
           {users.map((user, index) => {
             return (
-              <tr key={index} className="cursor-pointer">
-                <td
-                  className="py-3 whitespace-nowrap"
-                  onMouseEnter={() => dispatch(mouseEnter(user))}
-                  onMouseLeave={() => dispatch(mouseLeave())}
-                >
-                  <div className="flex items-center flex-shrink-0">
+              <tr key={index}>
+                <td className="py-3 whitespace-nowrap cursor-pointer">
+                  <div
+                    className="flex items-center flex-shrink-0"
+                    onMouseEnter={() => dispatch(mouseEnter(user))}
+                    onMouseLeave={() => dispatch(mouseLeave())}
+                  >
                     <div className="w-10 h-10">
                       <img
                         src={user.avatar}
@@ -55,7 +55,10 @@ const UserList = () => {
                       </p>
                     </>
                   ) : (
-                    <select name="status" className="p-2.5 w-28 rounded-[10px]">
+                    <select
+                      name="status"
+                      className="p-2.5 w-28 rounded-[10px] appearance-none after::content-['\25BC']"
+                    >
                       <option value="inActive">InActive</option>
                       <option value="active">Active</option>
                     </select>

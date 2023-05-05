@@ -18,18 +18,18 @@ function App() {
     <div
       className={`${
         theme
-          ? "bg-gradient-to-br from-[#000000] to-[#8B8B8B]"
-          : "bg-gradient-to-br from-[#4338ca] to-[#a855f7]"
-      } h-screen  overflow-hidden justify-center items-center flex`}
+          ? "bg-gradient-to-br from-black to-gray"
+          : "bg-gradient-to-br from-blue to-purple"
+      } container-lg border min-h-screen justify-center items-center flex`}
     >
-      <button
-        className="fixed  lg:top-[50px] lg:right-[100px] text-[1rem] rounded-full p-2 z-10 bg-[white]/30 text-[white]"
-        onClick={() => dispatch(changeTheme())}
-      >
-        {theme ? <BsSun /> : <MdDarkMode />}
-      </button>
-      <div className="absolute top-[4%] lg:w-[90%] w-auto h-auto bg-[#ffff]/30 backdrop-blur-md rounded-[20px]">
-        <div className="flex justify-evenly py-4 px-4 items-center">
+      <div className=" w-[90%]  bg-[#ffff]/30 backdrop-blur-md rounded-[20px]">
+        <button
+          className="absolute  top-[8px] right-[8px] text-[1rem] rounded-full p-2 z-10 bg-[white]/30 text-[white]"
+          onClick={() => dispatch(changeTheme())}
+        >
+          {theme ? <BsSun /> : <MdDarkMode />}
+        </button>
+        <div className="flex lg:justify-evenly py-4 px-4 items-center w-auto h-auto">
           <UserList />
           <UserCard />
         </div>
