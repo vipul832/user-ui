@@ -27,7 +27,7 @@ const UserCard = () => {
 
   const rangValue = Math.floor(Math.random() * 100);
   if (!user) {
-    return <div className="w-[22rem]"></div>;
+    return <div className="lg:w-[22rem]"></div>;
   }
 
   return (

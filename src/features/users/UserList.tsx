@@ -10,7 +10,7 @@ const UserList = () => {
   const users = useSelector(selectAllUsers);
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className="overflow-x-scroll lg:overflow-auto">
       <table className="text-center items-center w-4/12">
         <thead>
           <tr className="text-[1.3rem] text-left">
@@ -55,10 +55,7 @@ const UserList = () => {
                       </p>
                     </>
                   ) : (
-                    <select
-                      name="status"
-                      className="p-2.5 w-28 rounded-[10px] appearance-none after::content-['\25BC']"
-                    >
+                    <select name="status" className="">
                       <option value="inActive">InActive</option>
                       <option value="active">Active</option>
                     </select>
