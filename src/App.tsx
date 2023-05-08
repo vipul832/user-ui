@@ -1,6 +1,4 @@
 import UserList from "./features/users/UserList";
-// hook import
-// import { useState } from "react";
 
 //icons import
 import { BsSun } from "react-icons/bs";
@@ -17,14 +15,12 @@ function App() {
   return (
     <div
       className={`${
-        theme
-          ? "bg-gradient-to-br from-black to-gray"
-          : "bg-gradient-to-br from-blue to-purple"
+        theme ? "bg-gray-500" : "bg-indigo-300"
       } container-lg border min-h-screen justify-center items-center flex`}
     >
-      <div className=" w-[90%]  bg-[#ffff]/30 backdrop-blur-md rounded-[20px]">
+      <div className=" w-[90%]  bg-[#ffff]/30 backdrop-blur-md rounded-[20px] shadow-lg">
         <button
-          className="absolute  top-[8px] right-[8px] text-[1rem] rounded-full p-2 z-10 bg-[white]/30 text-[white]"
+          className="absolute  top-[8px] right-[8px] text-[1rem] rounded-full p-2 z-10 bg-[white]/30 border border-1"
           onClick={() => dispatch(changeTheme())}
         >
           {theme ? <BsSun /> : <MdDarkMode />}

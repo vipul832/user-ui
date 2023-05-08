@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllUsers } from "./userSlice";
 
-import { AiOutlineLock, AiOutlineDown } from "react-icons/ai";
+// Icon from React-icons Import
+import { AiOutlineLock } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import { mouseEnter, mouseLeave } from "./UserCardSlice";
@@ -12,7 +13,7 @@ const UserList = () => {
   return (
     <div className="overflow-x-scroll lg:overflow-auto">
       <table className="text-center items-center w-4/12">
-        <thead>
+        <thead className="">
           <tr className="text-[1.3rem] text-left">
             <th>Name</th>
             <th>Status</th>
@@ -24,7 +25,7 @@ const UserList = () => {
           {users.map((user, index) => {
             return (
               <tr key={index}>
-                <td className="py-3 whitespace-nowrap cursor-pointer">
+                <td className="py-3 whitespace-nowrap cursor-pointer pr-10">
                   <div
                     className="flex items-center flex-shrink-0"
                     onMouseEnter={() => dispatch(mouseEnter(user))}
@@ -41,29 +42,30 @@ const UserList = () => {
                       <div className="font-bold">
                         {user.first_name} {user.last_name}
                       </div>
-                      <div className="font-normal text-[white]">
-                        {user.email}
-                      </div>
+                      <div className="font-normal text-black">{user.email}</div>
                     </div>
                   </div>
                 </td>
-                <td className="whitespace-nowrap px-3 py-2 text-sm text-left">
+                <td className="whitespace-nowrap px-3 py-2 text-sm text-left pr-10">
                   {user.active ? (
                     <>
-                      <p className="text-2 font-semibold text-[white] px-2">
+                      <p className="text-2 font-semibold text-green-700 px-2">
                         Active
                       </p>
                     </>
                   ) : (
-                    <select name="status" className="p-2.5 w-28 rounded-[10px]">
+                    <select
+                      name="status"
+                      className="p-2.5 w-28 rounded-[10px] appearance-none"
+                    >
                       <option value="inActive">InActive</option>
                       <option value="active">Active</option>
                     </select>
                   )}
                 </td>
-                <td className="whitespace-nowrap px-3 py-2 text-sm text-left">
+                <td className="whitespace-nowrap px-3 py-2 text-sm text-left pr-10">
                   {user.owner ? (
-                    <p className="text-2 font-semibold text-[white] px-2">
+                    <p className="text-2 font-semibold text-gray-500 px-2">
                       Owner
                     </p>
                   ) : (
@@ -72,7 +74,7 @@ const UserList = () => {
                     </select>
                   )}
                 </td>
-                <td className="text-[25px]">
+                <td className="text-[25px] ps-3 pr-10">
                   {user.removable ? <RiDeleteBin5Line /> : <AiOutlineLock />}
                 </td>
               </tr>
