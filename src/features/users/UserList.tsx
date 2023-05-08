@@ -58,19 +58,20 @@ const UserList = () => {
                       name="status"
                       className="p-2.5 w-28 rounded-[10px] appearance-none"
                     >
-                      <option value="inActive">InActive</option>
+                      <option value="inActive">In Active</option>
                       <option value="active">Active</option>
                     </select>
                   )}
                 </td>
                 <td className="whitespace-nowrap px-3 py-2 text-sm text-left pr-10">
                   {user.owner ? (
-                    <p className="text-2 font-semibold text-gray-500 px-2">
+                    <p className="text-2 font-semibold text-gray-700 px-2 font-bold">
                       Owner
                     </p>
                   ) : (
                     <select name="access" className="p-2.5 w-28 rounded-[10px]">
                       <option value="">{user.role}</option>
+                      <option value="">{user.role=="Manager"? "Read":"Manager"}</option>
                     </select>
                   )}
                 </td>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState,useRef } from "react";
 
 import { useSelector } from "react-redux";
 import { currentUser } from "./UserCardSlice";
@@ -9,15 +9,18 @@ import UserButton from "../button/UserButton";
 const UserCard = () => {
   const user = useSelector(currentUser);
   const theme = useSelector(themeValue);
+  const cardPosition=useRef(null);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
-
+  let rangValue=45;
+  
   useEffect(() => {
     const handlePosition = (e: MouseEvent) => {
       if (window.innerWidth < 950) {
         setPosition({ x: e.clientX, y: e.clientY });
       } else {
         setPosition(position);
+         rangValue = Math.floor(Math.random() * 100);
       }
     };
 
@@ -27,21 +30,18 @@ const UserCard = () => {
     };
   }, []);
 
-  const rangValue = Math.floor(Math.random() * 100);
-  // console.log(rangValue);
-
   if (!user) {
-    console.log("call");
+    
     return <div className="lg:w-[22rem] w-0"></div>;
   }
 
   return (
     user && (
       <div
-        className="w-[22rem]  lg:bg-white/30 lg:backdrop-blur-md rounded-[40px] shadow-lg backdrop-blur bg-white/100"
+        className={`${theme?"lg:bg-secondary/30 bg-primary/30":"lg:bg-primary/30 bg-primary/30"}  w-[22rem]   lg:backdrop-blur-md rounded-[40px] shadow-lg backdrop-blur `}
         style={
           position.x !== 0
-            ? { position: "absolute", top: position.y, left: position.x }
+            ? { position: "absolute", top: position.y, left: position.x}
             : {}
         }
       >

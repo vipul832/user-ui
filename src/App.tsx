@@ -16,7 +16,7 @@ function App() {
     <div
       className={`${
         theme ? "bg-gray-500" : "bg-indigo-300"
-      } container-lg border min-h-screen justify-center items-center flex`}
+      } container-lg border min-h-screen justify-center items-center flex py-5`}
     >
       <div className=" w-[90%]  bg-[#ffff]/30 backdrop-blur-md rounded-[20px] shadow-lg">
         <button
