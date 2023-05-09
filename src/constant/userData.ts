@@ -27,6 +27,7 @@ export const users = [
     owner: true,
     role: "Manager",
     removable: false,
+    
   },
   {
     id: "641c3407f8c26a9cb62a4c7c",
