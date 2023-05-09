@@ -1,4 +1,4 @@
-import UserList from "./features/users/UserList";
+import UserList from "./components/users/UserList";
 
 //icons import
 import { BsSun } from "react-icons/bs";
@@ -7,7 +7,7 @@ import { MdDarkMode } from "react-icons/md";
 //store reducer import
 import { useSelector, useDispatch } from "react-redux";
 import { themeValue, changeTheme } from "./features/theme/themSlice";
-import UserCard from "./features/users/UserCard";
+import UserCard from "./components/users/UserCard";
 
 function App() {
   const theme = useSelector(themeValue);

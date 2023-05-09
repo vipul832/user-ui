@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
-import { currentUser } from "./UserCardSlice";
-import { themeValue } from "../theme/themSlice";
+import { currentUser } from "../../features/users/UserCardSlice";
+import { themeValue } from "../../features/theme/themSlice";
 
 import UserButton from "../button/UserButton";
 const initialPosition = { x: 0, y: 0 };
@@ -10,10 +10,9 @@ const initialPosition = { x: 0, y: 0 };
 const UserCard = () => {
   const user = useSelector(currentUser);
   const theme = useSelector(themeValue);
-  const cardPosition = useRef(null);
   const [position, setPosition] = useState(initialPosition);
 
-  let rangValue = 45;
+  const rangValue = 45;
 
   useEffect(() => {
     const handlePosition = (e: MouseEvent) => {
@@ -21,7 +20,6 @@ const UserCard = () => {
         setPosition({ x: e.clientX, y: e.clientY });
       } else {
         setPosition(initialPosition);
-        rangValue = Math.floor(Math.random() * 100);
       }
     };
 
@@ -42,7 +40,7 @@ const UserCard = () => {
           theme
             ? "lg:bg-secondary/30 bg-secondary"
             : "lg:bg-primary/60 bg-primary"
-        }  lg:w-[22rem] rounded-[40px] shadow-lg w-[15rem]`}
+        }  lg:w-[22rem] rounded-[40px] shadow-lg w-[20rem]`}
         style={
           position.x !== 0
             ? { position: "absolute", top: position.y, left: position.x }
@@ -74,22 +72,11 @@ const UserCard = () => {
           </div>
           <div className="">
             <p className="text-[1.2rem] font-semibold">Your Plan: Standard</p>
-            {/* <button
-              className={`px-11 py-2 mt-3 ${
-                theme ? "bg-gray-500 text-white" : "bg-indigo-500 text-white"
-              }  rounded-lg whitespace-nowrap`}
-            >
-              Active User
-            </button> */}
             <UserButton text="Active User" />
           </div>
           <div className="mt-5 mb-5">
             <p className="text-start font-semibold">Plan Uses</p>
-            {/* <input
-            type="range"
-            className={`rang w-full ${theme ? "" : ""}`}
-            defaultValue={String(rangValue)}
-          /> */}
+
             <div className="h-2 relative max-w-xl rounded-full overflow-hidden bg-white">
               <div
                 className="h-5 bg-indigo-500 absolute rounded-r-[5px]"

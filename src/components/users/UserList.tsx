@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllUsers } from "./userSlice";
+import { selectAllUsers } from "../../features/users/userSlice";
 
 // Icon from React-icons Import
 import { AiOutlineLock } from "react-icons/ai";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-import { mouseEnter, mouseLeave } from "./UserCardSlice";
+import { mouseEnter, mouseLeave } from "../../features/users/UserCardSlice";
 
 const UserList = () => {
   const users = useSelector(selectAllUsers);

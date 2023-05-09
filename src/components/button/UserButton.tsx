@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
-import { themeValue } from "../theme/themSlice";
+import { themeValue } from "../../features/theme/themSlice";
 
 type props = {
   text: string;
