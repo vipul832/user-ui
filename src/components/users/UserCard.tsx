@@ -30,7 +30,7 @@ const UserCard = () => {
   }, []);
 
   if (!user) {
-    return <div className="lg:w-[22rem] w-0"></div>;
+    return <div className="lg:w-[22rem] w-0 "></div>;
   }
 
   return (
