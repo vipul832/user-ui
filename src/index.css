@@ -6,7 +6,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url("../public/down-arrow\ \(1\).png") 96% / 15% no-repeat #eee;
+  background: url("/public/down-arrow\ \(1\).png") 96% / 15% no-repeat #eee;
 }
 
 .modal {
