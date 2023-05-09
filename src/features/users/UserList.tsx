@@ -56,10 +56,14 @@ const UserList = () => {
                   ) : (
                     <select
                       name="status"
-                      className="p-2.5 w-28 rounded-[10px] appearance-none"
+                      className="p-2.5 w-28 rounded-[10px] appearance-none outline-none"
                     >
-                      <option value="inActive">In Active</option>
-                      <option value="active">Active</option>
+                      <option className="text-[16px]" value="inActive">
+                        In Active
+                      </option>
+                      <option className="text-[16px]" value="active">
+                        Active
+                      </option>
                     </select>
                   )}
                 </td>
@@ -69,9 +73,16 @@ const UserList = () => {
                       Owner
                     </p>
                   ) : (
-                    <select name="access" className="p-2.5 w-28 rounded-[10px]">
-                      <option value="">{user.role}</option>
-                      <option value="">{user.role=="Manager"? "Read":"Manager"}</option>
+                    <select
+                      name="access"
+                      className="p-2.5 w-28 rounded-[10px] outline-none "
+                    >
+                      <option className="text-[16px]" value="">
+                        {user.role}
+                      </option>
+                      <option className="text-[16px]" value="">
+                        {user.role == "Manager" ? "Read" : "Manager"}
+                      </option>
                     </select>
                   )}
                 </td>

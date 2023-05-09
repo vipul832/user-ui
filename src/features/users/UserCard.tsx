@@ -1,26 +1,27 @@
-import React, { useCallback, useEffect, useState,useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 
 import { useSelector } from "react-redux";
 import { currentUser } from "./UserCardSlice";
 import { themeValue } from "../theme/themSlice";
 
 import UserButton from "../button/UserButton";
+const initialPosition = { x: 0, y: 0 };
 
 const UserCard = () => {
   const user = useSelector(currentUser);
   const theme = useSelector(themeValue);
-  const cardPosition=useRef(null);
+  const cardPosition = useRef(null);
+  const [position, setPosition] = useState(initialPosition);
 
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  let rangValue=45;
-  
+  let rangValue = 45;
+
   useEffect(() => {
     const handlePosition = (e: MouseEvent) => {
       if (window.innerWidth < 950) {
         setPosition({ x: e.clientX, y: e.clientY });
       } else {
-        setPosition(position);
-         rangValue = Math.floor(Math.random() * 100);
+        setPosition(initialPosition);
+        rangValue = Math.floor(Math.random() * 100);
       }
     };
 
@@ -31,17 +32,20 @@ const UserCard = () => {
   }, []);
 
   if (!user) {
-    
     return <div className="lg:w-[22rem] w-0"></div>;
   }
 
   return (
     user && (
       <div
-        className={`${theme?"lg:bg-secondary/30 bg-primary/30":"lg:bg-primary/30 bg-primary/30"}  w-[22rem]   lg:backdrop-blur-md rounded-[40px] shadow-lg backdrop-blur `}
+        className={`${
+          theme
+            ? "lg:bg-secondary/30 bg-secondary"
+            : "lg:bg-primary/60 bg-primary"
+        }  lg:w-[22rem] rounded-[40px] shadow-lg w-[15rem]`}
         style={
           position.x !== 0
-            ? { position: "absolute", top: position.y, left: position.x}
+            ? { position: "absolute", top: position.y, left: position.x }
             : {}
         }
       >
@@ -60,7 +64,7 @@ const UserCard = () => {
             <sup>
               <div
                 className={`w-2 h-2 ${
-                  user.active ? "bg-green-700" : "bg-orange-300 "
+                  user.active ? "bg-green-400" : "bg-orange-300 "
                 } rounded-full`}
               ></div>
             </sup>
@@ -88,7 +92,7 @@ const UserCard = () => {
           /> */}
             <div className="h-2 relative max-w-xl rounded-full overflow-hidden bg-white">
               <div
-                className="h-5 bg-indigo-500 absolute"
+                className="h-5 bg-indigo-500 absolute rounded-r-[5px]"
                 style={{ width: `${rangValue}%` }}
               ></div>
             </div>
@@ -98,7 +102,7 @@ const UserCard = () => {
               <p className="text-[2rem] font-bold">2,450</p>
               <p className="text-[#4e4e4e]">clicks reviewed</p>
             </div>
-            <hr className="h-auto w-[2px] bg-gray-400" />
+            <hr className="h-auto w-[2px] bg-white" />
             <div>
               <p className="text-[2rem] font-bold">5000</p>
               <p className="text-[#4e4e4e]">Monthly clicks</p>
