@@ -5,7 +5,6 @@ In this practical, we have tried to implement a scenario that you probably find 
 - Typescript
 - React
 - Redux-ToolKit
-- RTK-Query
 
 ## Installation 
 To clone this project flow below step.
